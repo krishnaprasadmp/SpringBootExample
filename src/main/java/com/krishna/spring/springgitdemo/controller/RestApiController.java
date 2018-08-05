@@ -23,19 +23,17 @@ public class RestApiController {
     @Autowired
     UserService userService; //Service which will do all data retrieval/manipulation work
 
-    // -------------------Retrieve All Users---------------------------------------------
 
     @GetMapping
     public List<User> listAllUsers() {
         List<User> users = userService.findAllUsers();
         if (users.isEmpty()) {
             return null;
-            // You many decide to return HttpStatus.NOT_FOUND
+
         }
         return users;
     }
 
-    // -------------------Retrieve Single User------------------------------------------
 
     @GetMapping(value = "/user/{id}")
     public User getUser(@PathVariable("id") long id) {
